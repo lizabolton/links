@@ -68,9 +68,13 @@ ul.task-list li input[type="checkbox"] {
 <h1>Workshop links</h1>
 </section>
 <p><a href="https://forms.office.com/r/EeGU9Vb7wJ">Quiz</a></p>
+<section id="choose-your-own-astro-adventure" class="level2">
+<h2 class="anchored" data-anchor-id="choose-your-own-astro-adventure">Choose your own astro adventure:</h2>
+<p>Try the activities below.</p>
+<p><a href="https://blackholehunter.org/game.html">Black hole hunter: Listen for a black hole thump</a></p>
+<p><a href="https://mo-www.cfa.harvard.edu/cgi-bin/OWN/Own.pl">NASA’s astrophoto challenge</a></p>
+<p><a href="https://www.zooniverse.org/projects/zooniverse/gravity-spy/stats">Gravity spy: Help researchers find real gravitational waves</a></p>
 <p><a href="https://gwfilter.streamlit.app/">Signal processing activity</a></p>
-<section id="section" class="level1">
-<h1></h1>
 </section>
 <section id="learn-more-at-home" class="level1 glowing">
 <h1>Learn more at home</h1>
@@ -449,4 +453,67 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       };
     }
       // Attach click handler to the DT
-      const anno
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
