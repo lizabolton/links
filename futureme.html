@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to Future Me Year 10</title>
+<title>Welcome to Future Me Year 10: Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to Future Me Year 10</h1>
+<h1 class="title">Welcome to Future Me Year 10: Statistics</h1>
 </div>
 
 
@@ -63,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>You can learn more about the Department of Statistics on our <a href="https://www.auckland.ac.nz/en/science/about-the-faculty/department-of-statistics.html">website</a>.</p>
 <section id="workshop-links" class="level1 glowing">
 <h1>Workshop links</h1>
 </section>
@@ -84,6 +85,15 @@ ul.task-list li input[type="checkbox"] {
 <p>[18’30” podcast]</p>
 <p><a href="https://www.rnz.co.nz/programmes/sci-fi-sci-fact/story/2018942989/the-interstellar-black-hole">Link</a></p>
 <p>Why check it out? ‘Spaghettification’ and black holes as belly buttons in the fabric of space. Learn what is science fact and what is science fiction about the black hole depicted in the movie ‘Interstellar’ from</p>
+</section>
+<section id="careers.govt.nz-data-realted-jobs-profiles" class="level2">
+<h2 class="anchored" data-anchor-id="careers.govt.nz-data-realted-jobs-profiles">Careers.govt.nz Data-realted jobs profiles</h2>
+<p><a href="https://www.careers.govt.nz/jobs-database/it-and-telecommunications/information-technology/data-analyst/">Data analyst</a></p>
+<p><a href="https://www.careers.govt.nz/jobs-database/education-and-social-sciences/market-social-research/statistician/">Statistician</a></p>
+<hr>
+<div class="glowing">
+<p>Questions about today? Get in touch with <a href="https://profiles.auckland.ac.nz/liza-bolton">Dr Liza Bolton</a>, liza.bolton@auckland.ac.nz.</p>
+</div>
 </section>
 
 </main>
@@ -439,67 +449,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       };
     }
       // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-
-
-
-
-</body></html>
+      const anno
