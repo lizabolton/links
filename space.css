@@ -1,0 +1,36 @@
+body {
+  background-color: #040914; /* Deep space background */
+  color: #ffffff; /* White text for contrast */
+  font-family: 'Space Mono', monospace; /* Sci-fi font */
+  line-height: 1.6; /* Readable line spacing */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif; /* Futuristic header font */
+}
+
+a {
+  color: #FF9900; /* Neon blue links */
+  text-decoration: none; /* Remove underlines */
+  border-bottom: 1px solid #FF9900; /* Add neon bottom border */
+}
+
+a:hover {
+  border-bottom: 2px solid #00ffff; /* Thicker border on hover */
+}
+
+code {
+  background-color: #1a1a1a; /* Dark code background */
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+blockquote {
+  border-left: 5px solid #00ffff; /* Neon quote border */
+  padding-left: 15px;
+}
+
+/* Add glowing effects */
+.glowing {
+  text-shadow: 0 0 10px #FF9900, 0 0 20px #FF9900, 0 0 30px #FF9900;
+}
