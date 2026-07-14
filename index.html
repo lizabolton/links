@@ -1,58 +1,239 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Liza's Links Landing Page</title>
-  <style>
-    /* Add your custom CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-    .cta-button {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 18px;
-      text-decoration: none;
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 4px;
-    }
-    /* <p><a href="https://statsapps.online/slinky/G291726211GT2H/student/">Stats app for interactives</a></p> */
-    /*   <p><a href="https://statsapps.online/write/G292N1Q132D9/create/">Quick, write! app</a></p>*/
-    /* <p><a href="https://statsapps.online/slinky/G291726211GQ26/student/">STATS 330 lecture activty app</a></p> */
-    /*<p><a href="https://lizabolton.github.io/2024-12-02_NZSA-Wellington/">NZSA 2024 🤔 That's Questionable</a></p>*/
-    /*<p><a href="https://lizabolton.github.io/2025-biosci738-ethics/#/title-slide">BIOSCI 738 Slides</a></p>*/
-    /*<p><a href="https://lizabolton.github.io/2025-biosci738-ethics/runsheet_03.html">BIOSCI 738 Runsheet</a></p>*/
-    /*<p><a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">BIOSCI 738 Collaborative Google Doc</a></p>*/
-   
-  
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liza's Links Landing Page</title>
+    
+    <!-- Google Fonts Integration from your Distill system -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /*-- Main font sizes from your system --*/
+            --title-size:      42px;
+            --body-size:       1.06rem;
+            --code-size:       0.9rem;
+            
+            /*-- Main brand colors --*/
+            --title-color:     #000000;
+            --header-color:    #611E65; /* Deep Royal Purple */
+            --hover-color:     #87528A; /* Slate Violet */
+            --body-color:      #000000;
+            --aside-color:     rgba(0, 0, 0, 0.6);
+            --bg-color:        #fffcfa; /* Signature parchment white */
+            --card-bg:         #ffffff;
+            
+            /*-- Typography declarations --*/
+            --heading-font:    'Libre Baskerville', serif;
+            --body-font:       'Montserrat', sans-serif;
+            --mono-font:       'Fira Mono', monospace;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: var(--body-size);
+            background-color: var(--bg-color);
+            color: var(--body-color);
+            margin: 0;
+            padding: 60px 20px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header-wrap {
+            max-width: 900px;
+            margin: 0 auto 48px auto;
+            border-bottom: 1px solid rgba(97, 30, 101, 0.15);
+            padding-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .header h1 {
+            font-family: var(--heading-font);
+            font-size: var(--title-size);
+            color: var(--header-color);
+            font-weight: 300;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .header p {
+            color: var(--aside-color);
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* Main Site Return Button */
+        .btn-main-site {
+            font-family: var(--body-font);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--header-color);
+            text-decoration: none;
+            padding: 10px 18px;
+            border: 1px solid var(--header-color);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            margin-top: 8px;
+        }
+
+        .btn-main-site:hover {
+            background-color: var(--header-color);
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* Section Layouts */
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            font-size: 1.5rem;
+            color: var(--header-color);
+            margin-bottom: 24px;
+            font-weight: 400;
+            border-bottom: 1px dashed rgba(97, 30, 101, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            background: var(--card-bg);
+            padding: 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--header-color);
+            box-shadow: 0 1px 4px rgba(97, 30, 101, 0.03);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-item:hover {
+            border-left-color: var(--hover-color);
+            background: #fafafa;
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(97, 30, 101, 0.06);
+        }
+
+        .grid-item h3 {
+            font-family: var(--heading-font);
+            color: var(--header-color);
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        .grid-item:hover h3 {
+            color: var(--hover-color);
+        }
+
+        .grid-item p {
+            margin: 0;
+            color: #333333;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Subtle styling variation for Previous resources to lower visual weight */
+        .previous-section .grid-item {
+            border-left-color: var(--aside-color);
+            opacity: 0.9;
+        }
+        
+        .previous-section .grid-item h3 {
+            color: #444444;
+        }
+
+        .previous-section .grid-item:hover {
+            border-left-color: var(--hover-color);
+            opacity: 1;
+        }
+        
+        .previous-section .grid-item:hover h3 {
+            color: var(--hover-color);
+        }
+
+        .grid-item code {
+            font-family: var(--mono-font);
+            font-size: var(--code-size);
+            background-color: rgba(97, 30, 101, 0.05);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: var(--header-color);
+        }
+
+        /* Mobile responsiveness adjustments */
+        @media (max-width: 600px) {
+            .header-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .btn-main-site {
+                margin-top: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📢 Links! Links! Get your links here.</h1>
-    <p><a href="https://lizabolton.github.io/2025-12-10_NZSA/#/title-slide">2025 NZSA Slides</a></p>
-     <br/>
-    <br/>
-    <img src="https://raw.githubusercontent.com/lizabolton/links/refs/heads/main/qr-code-links-page.png" alt="QR code for this page">
-    <hr>
-    <a href="http://www.lizabolton.com">Go to lizabolton.com</a>
-  </div>
-  
+
+    <div class="header-wrap">
+        <div class="header-text">
+            <div class="header">
+                <h1>Liza's links</h1>
+                <p></p>
+            </div>
+        </div>
+        <a href="http://lizabolton.nz/" class="btn-main-site">← Main Website</a>
+    </div>
+
+    <!-- CURRENT SECTION -->
+    <div class="section-container">
+        <h2 class="section-title">ICOTS 12</h2>
+        <p>Talk Data to Me? Supporting English Language Learners in Statistics and Data Science</p>
+        <div class="grid-container">
+            <a href="https://lizabolton.github.io/2026-07-16_ICOTS/#/title-slide" target="_blank" rel="noopener" class="grid-item">
+                <h3>Slides</h3>
+            </a>
+            <a href="https://virtual.oxfordabstracts.com/event/73693/submission/236" target="_blank" rel="noopener" class="grid-item">
+                <h3>Paper</h3>
+                <p>Log in to the programme to access the full paper</p>
+            </a>
+            
+           <!-- 
+           <a href="http://lizabolton.nz/" target="_blank" rel="noopener" class="grid-item">
+                <h3>Pedagogical Research</h3>
+                <p>Worksheets, curriculum design patterns, and systemic automated feedback collation notes.</p>
+            </a>
+            -->
+        </div>
+    </div>
+
 </body>
 </html>
