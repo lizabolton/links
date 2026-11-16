@@ -1,0 +1,2518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>In their own words: Experiences of English Language Learners in Statistics</title>
+
+  <!-- Google Fonts: Newsreader, Source Sans 3, JetBrains Mono, and Noto Sans SC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Sans+SC:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & TOKENS (Quarto / Reveal.js Academic Editorial Aesthetic)
+       ========================================================================== */
+    :root {
+      --bg-paper: #FAF8F5;
+      --bg-surface: #F2EDE4;
+      --bg-surface-deep: #EAE2D5;
+      --navy: #1B365D;
+      --navy-tint: rgba(27, 54, 93, 0.07);
+      --forest: #1B3B36;
+      --forest-tint: rgba(27, 59, 54, 0.08);
+      --terracotta: #9E3B33;
+      --terracotta-tint: rgba(158, 59, 51, 0.08);
+      --ochre: #B87333;
+      --ochre-tint: rgba(184, 115, 51, 0.12);
+      --benchmark-blue: #0022FF;
+      --ink: #1F242B;
+      --ink-muted: #5A626D;
+      --border-subtle: rgba(27, 54, 93, 0.15);
+      --border-strong: rgba(27, 54, 93, 0.28);
+
+      --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sc: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+      --slide-w: 1600px;
+      --slide-h: 900px;
+      --stage-scale: 1;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #E5DDD0;
+      color: var(--ink);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       2. VIEWPORT & 1600x900 16:9 STAGE ARCHITECTURE
+       ========================================================================== */
+    .deck-shell {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stage-area {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stage-frame {
+      width: calc(var(--slide-w) * var(--stage-scale));
+      height: calc(var(--slide-h) * var(--stage-scale));
+      max-width: 1600px;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: var(--bg-paper);
+      border-radius: 8px;
+      box-shadow: 0 22px 58px rgba(31, 36, 43, 0.18), 0 0 0 1px var(--border-subtle);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .slides-root {
+      width: var(--slide-w);
+      height: var(--slide-h);
+      transform: scale(var(--stage-scale));
+      transform-origin: top left;
+      position: relative;
+      background-color: var(--bg-paper);
+      background-image:
+        radial-gradient(rgba(184, 115, 51, 0.045) 1px, transparent 0),
+        radial-gradient(rgba(27, 54, 93, 0.03) 1px, transparent 0);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    /* Thin Top Progress Bar (4px) */
+    .top-progress-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(27, 54, 93, 0.1);
+      z-index: 30;
+    }
+
+    .top-progress-fill {
+      height: 100%;
+      width: 11.11%;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--terracotta) 100%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ==========================================================================
+       3. QUARTO / REVEAL.JS FOOTER & PRESENTER HUD
+       ========================================================================== */
+    .quarto-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 44px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(27, 54, 93, 0.1);
+      background: rgba(250, 248, 245, 0.9);
+      z-index: 25;
+      font-size: 14px;
+      color: var(--ink-muted);
+    }
+
+    .footer-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--ink-muted);
+    }
+
+    .footer-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      padding: 3px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .hud-btn:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+      background: #FFFFFF;
+    }
+
+    .hud-btn.active {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #FFFFFF;
+    }
+
+    .slide-jump-select {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--navy);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      max-width: 240px;
+    }
+
+    .slide-jump-select:hover, .slide-jump-select:focus {
+      border-color: var(--navy);
+      outline: none;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 3px 11px;
+      border-radius: 5px;
+      color: var(--navy);
+    }
+
+    .timer-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--navy);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 3px 11px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .timer-pill:hover {
+      border-color: var(--navy);
+    }
+
+    .timer-pill.running {
+      border-color: var(--ochre);
+      background: var(--ochre-tint);
+    }
+
+    .timer-pill.warning {
+      background: rgba(184, 115, 51, 0.24);
+      border-color: var(--ochre);
+      color: #7A4614;
+    }
+
+    .timer-pill.overtime {
+      background: rgba(158, 59, 51, 0.18);
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+    }
+
+    /* ==========================================================================
+       4. SLIDE TRANSITIONS & CORE EDITORIAL TYPOGRAPHY (1600x900 Scale)
+       ========================================================================== */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 44px;
+      padding: 46px 68px 36px 68px;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(14px);
+      transition: opacity 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0.26s;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      pointer-events: auto;
+      z-index: 2;
+    }
+
+    .slide.exit-left {
+      opacity: 0;
+      transform: translateX(-14px);
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 82px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin: 0 0 18px 0;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 46px;
+      line-height: 1.14;
+      letter-spacing: -0.015em;
+      color: var(--navy);
+      margin: 0 0 24px 0;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--border-subtle);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    h2 .h2-sub {
+      font-family: var(--font-sans);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--ink-muted);
+    }
+
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ochre);
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    p {
+      font-size: 24px;
+      line-height: 1.5;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    ul.editorial-list {
+      margin: 0;
+      padding: 0 0 0 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    ul.editorial-list li {
+      font-size: 23px;
+      line-height: 1.46;
+      color: var(--ink);
+      padding-left: 6px;
+    }
+
+    ul.editorial-list li::marker {
+      color: var(--terracotta);
+    }
+
+    ul.editorial-list li strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       5. TWO-COLUMN MUSEUM PLATE & GALLERY PLAQUE SYSTEM
+       ========================================================================== */
+    .columns {
+      display: flex;
+      gap: 44px;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .left-column-container {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 0;
+    }
+
+    .left-column-main {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .gallery-plaque {
+      border-left: 3.5px solid var(--terracotta);
+      background: var(--bg-surface);
+      padding: 13px 18px;
+      font-size: 16px;
+      line-height: 1.42;
+      border-radius: 0 7px 7px 0;
+      color: var(--ink);
+    }
+
+    .gallery-plaque .artist {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 17.5px;
+    }
+
+    .gallery-plaque .artwork-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--ink);
+      margin: 3px 0;
+      font-size: 17px;
+    }
+
+    .gallery-plaque .meta {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--ink-muted);
+    }
+
+    .gallery-plaque .meta a {
+      color: var(--terracotta);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(158, 59, 51, 0.35);
+    }
+
+    .column-image-bg {
+      width: 40%;
+      height: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface);
+      box-shadow: 0 14px 34px -10px rgba(31, 36, 43, 0.15);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .column-image-bg svg,
+    .column-image-bg img.plate-art {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .plate-swap-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(250, 248, 245, 0.94);
+      border: 1px solid var(--ochre);
+      color: var(--navy);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 5px 11px;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease, background-color 0.15s ease, color 0.15s ease;
+      z-index: 6;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .column-image-bg:hover .plate-swap-btn {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .plate-swap-btn:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       6. SLIDE 1 (#title-slide) — INVESTIGATOR GRID
+       ========================================================================== */
+    .title-layout {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 14px;
+    }
+
+    .title-block {
+      border-left: 5px solid var(--terracotta);
+      padding-left: 34px;
+      margin-top: 10px;
+    }
+
+    .title-subtitle {
+      font-family: var(--font-sans);
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.32;
+      color: var(--terracotta);
+      margin: 0 0 24px 0;
+    }
+
+    .grant-context-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--ochre);
+      padding: 10px 18px;
+      border-radius: 0 7px 7px 0;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .investigator-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      padding-top: 28px;
+      border-top: 1.5px solid var(--border-subtle);
+    }
+
+    .inv-card {
+      background: rgba(242, 237, 228, 0.72);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+
+    .inv-card.lead {
+      background: var(--bg-surface);
+      border-top: 4px solid var(--navy);
+    }
+
+    .inv-name {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .inv-name u {
+      text-decoration-color: var(--terracotta);
+      text-decoration-thickness: 2.5px;
+      text-underline-offset: 4px;
+    }
+
+    .inv-role {
+      font-size: 16.5px;
+      line-height: 1.38;
+      color: var(--ink-muted);
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       7. SLIDE 2 (#pepeha-greetings) — PEPEHA & MANDARIN GREETING
+       ========================================================================== */
+    .pepeha-left {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .pepeha-lines {
+      font-family: var(--font-serif);
+      font-size: 33px;
+      line-height: 1.56;
+      color: var(--navy);
+      white-space: pre-line;
+      margin: 0;
+      padding-left: 26px;
+      border-left: 4px solid var(--ochre);
+    }
+
+    .pepeha-rule {
+      border: 0;
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 4px 0;
+      width: 100%;
+    }
+
+    .mandarin-plaque {
+      border-left: 4px solid var(--terracotta);
+      background: var(--bg-surface);
+      padding: 16px 24px;
+      border-radius: 0 8px 8px 0;
+      font-family: var(--font-sc);
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+
+    .pepeha-right {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pepeha-right .column-image-bg {
+      width: 100%;
+      flex: 1;
+    }
+
+    /* ==========================================================================
+       8. CALLOUT BOXES, TIKTOK PLATE & MOTIVATION CARDS
+       ========================================================================== */
+    .callout-box {
+      background: var(--bg-surface);
+      border-left: 4px solid var(--navy);
+      padding: 16px 22px;
+      border-radius: 0 8px 8px 0;
+      font-size: 22px;
+      line-height: 1.46;
+    }
+
+    .callout-box.terracotta {
+      border-left-color: var(--terracotta);
+    }
+
+    .callout-box.ochre {
+      border-left-color: var(--ochre);
+    }
+
+    .callout-box.forest {
+      border-left-color: var(--forest);
+      background: var(--forest-tint);
+    }
+
+    /* Slide 4: TikTok Lecture Room Story Card */
+    .story-narrative {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--terracotta);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px;
+      font-size: 24px;
+      line-height: 1.54;
+      color: var(--ink);
+    }
+
+    .story-quote-highlight {
+      display: block;
+      margin-top: 14px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 27px;
+      line-height: 1.44;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .lecture-photo-frame {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 16px 36px -10px rgba(27, 54, 93, 0.22);
+      background: #1B2430;
+    }
+
+    .lecture-photo-frame svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .tiktok-corner-caption {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      max-width: 78%;
+      background: rgba(18, 22, 28, 0.84);
+      backdrop-filter: blur(4px);
+      border-left: 3.5px solid #FAF8F5;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      color: #FAF8F5;
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.4;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Slide 5: Stat Row */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-top: 4px solid var(--navy);
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .stat-card.accent {
+      border-top-color: var(--terracotta);
+    }
+
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.05;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .stat-card.accent .stat-num {
+      color: var(--terracotta);
+    }
+
+    .stat-desc {
+      font-size: 18.5px;
+      line-height: 1.38;
+      color: var(--ink);
+    }
+
+    .stat-src {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       9. SLIDE 6 (#methodology) — 3-PHASE PIPELINE & CULTURAL SAFETY RIBBON
+       ========================================================================== */
+    .methodology-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      min-height: 0;
+      gap: 22px;
+    }
+
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 44px 1fr 44px 1fr;
+      align-items: stretch;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .phase-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-top: 5px solid var(--navy);
+      border-radius: 9px;
+      padding: 24px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 24px -12px rgba(31, 36, 43, 0.14);
+    }
+
+    .phase-card.quant {
+      border-top-color: var(--terracotta);
+      background: #F6EFE6;
+    }
+
+    .phase-card.qual2 {
+      border-top-color: var(--forest);
+    }
+
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--terracotta);
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .phase-card h3 {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.22;
+      color: var(--navy);
+      margin: 0 0 12px 0;
+    }
+
+    .phase-card p {
+      font-size: 20.5px;
+      line-height: 1.46;
+      color: var(--ink);
+    }
+
+    .phase-output {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-muted);
+    }
+
+    .pipeline-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ochre);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .safety-ribbon {
+      background: var(--navy);
+      color: #FAF8F5;
+      border-radius: 9px;
+      padding: 18px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 6px solid var(--ochre);
+    }
+
+    .safety-ribbon-title {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #F2C48D;
+    }
+
+    .safety-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .safety-pill {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 18px;
+      color: #FAF8F5;
+    }
+
+    /* ==========================================================================
+       10. SLIDE 7 (#paper-learnings) — THREE INSIGHT CARDS
+       ========================================================================== */
+    .insight-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .insight-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 5px solid var(--navy);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 22px;
+    }
+
+    .insight-card.terracotta {
+      border-left-color: var(--terracotta);
+    }
+
+    .insight-card.forest {
+      border-left-color: var(--forest);
+    }
+
+    .insight-card h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 0 0 6px 0;
+    }
+
+    .insight-card p {
+      font-size: 20px;
+      line-height: 1.44;
+      color: var(--ink);
+    }
+
+    /* ==========================================================================
+       11. SLIDE 8 (#ai-babel-fish) — INTERACTIVE BABEL FISH TOOLTIP
+       ========================================================================== */
+    .babel-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--ochre-tint);
+      border: 1.5px solid var(--ochre);
+      color: var(--navy);
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      vertical-align: middle;
+      margin-left: 8px;
+      transition: all 0.16s ease;
+    }
+
+    .babel-trigger:hover,
+    .babel-trigger.open {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #FAF8F5;
+    }
+
+    .babel-popover {
+      position: relative;
+      margin-top: 14px;
+      background: #182334;
+      color: #FAF8F5;
+      border: 2px solid #F2C94C;
+      border-radius: 10px;
+      padding: 18px 22px;
+      box-shadow: 0 18px 40px rgba(24, 35, 52, 0.28);
+      display: none;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .babel-popover.visible {
+      display: flex;
+      animation: popIn 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .babel-quote {
+      font-family: var(--font-mono);
+      font-size: 14.5px;
+      line-height: 1.48;
+      letter-spacing: 0.03em;
+      color: #FCE38A;
+    }
+
+    .babel-sub {
+      font-family: var(--font-sans);
+      font-size: 15.5px;
+      color: #D7E0EC;
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       12. SLIDE 9 (#thanks) — GRATITUDE & QR CODE LAYOUT
+       ========================================================================== */
+    .thanks-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 36px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .thanks-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .partner-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .partner-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-top: 4px solid var(--navy);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .partner-card.terracotta {
+      border-top-color: var(--terracotta);
+    }
+
+    .partner-card.forest {
+      border-top-color: var(--forest);
+    }
+
+    .partner-name {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .partner-role {
+      font-size: 16px;
+      line-height: 1.36;
+      color: var(--ink-muted);
+    }
+
+    .ra-strip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--ochre);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 20px;
+      font-size: 20px;
+      color: var(--ink);
+    }
+
+    .qr-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       13. SPEAKER NOTES DRAWER ('S') & OVERVIEW GRID MODAL ('O')
+       ========================================================================== */
+    .notes-drawer {
+      height: 0;
+      overflow: hidden;
+      background: #F4EFE6;
+      border-top: 0 solid var(--border-strong);
+      transition: height 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-top-width 0.2s;
+      display: flex;
+      flex-direction: column;
+      z-index: 35;
+    }
+
+    .notes-drawer.open {
+      height: 185px;
+      border-top-width: 2px;
+    }
+
+    .notes-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 32px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--navy);
+    }
+
+    .notes-content {
+      padding: 14px 36px 20px 36px;
+      overflow-y: auto;
+      font-size: 17px;
+      line-height: 1.52;
+      color: var(--ink);
+      max-width: 1320px;
+    }
+
+    .overview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(25, 30, 37, 0.9);
+      backdrop-filter: blur(6px);
+      z-index: 90;
+      display: none;
+      flex-direction: column;
+      padding: 26px 40px;
+      overflow-y: auto;
+    }
+
+    .overview-modal.open {
+      display: flex;
+    }
+
+    .overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #FAF8F5;
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .overview-header h3 {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: 26px;
+      margin: 0;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .ov-card {
+      background: var(--bg-paper);
+      border: 2px solid transparent;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .ov-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--ochre);
+    }
+
+    .ov-card.current {
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(158, 59, 51, 0.4);
+    }
+
+    .ov-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-paper);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .ov-clone-wrap {
+      width: 1600px;
+      height: 900px;
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    .ov-meta {
+      padding: 10px 14px;
+      background: var(--bg-surface);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .ov-meta strong {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ov-time {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+    }
+
+    /* Toast notification banner */
+    .toast-msg {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background: var(--navy);
+      color: #FAF8F5;
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 120;
+    }
+
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-shell">
+    <input type="file" id="plateUploader" accept="image/*" style="display:none;" />
+    <div class="toast-msg" id="toastMsg" role="status" aria-live="polite"></div>
+
+    <main class="stage-area" id="stageArea">
+      <div class="stage-frame">
+        <div class="slides-root" id="slidesRoot">
+          <!-- Thin Top Progress Bar -->
+          <div class="top-progress-track" aria-hidden="true">
+            <div class="top-progress-fill" id="topProgressFill"></div>
+          </div>
+
+          <!-- ================================================================
+               SLIDE 1: TITLE SLIDE (#title-slide)
+               ================================================================ -->
+          <section class="slide active" id="title-slide" data-title="Title: In their own words" data-time="0:00–0:30"
+            data-notes="Kia ora tātou. Today I'm sharing our Faculty of Science SoTL project, 'In their own words: Experiences of English Language Learners in Statistics', conducted with our wonderful Research Assistants Jingdi Sun, Ping Huang, and Christy Sun at Waipapa Taumata Rau University of Auckland. (Target: 30s)">
+            <div class="title-layout">
+              <div>
+                <div class="kicker">
+                  <span>Faculty of Science SoTL Showcase</span>
+                  <span>·</span>
+                  <span>10-Minute Presentation</span>
+                </div>
+                <div class="title-block">
+                  <h1>In their own words</h1>
+                  <p class="title-subtitle">Experiences of English Language Learners in Statistics</p>
+                  <div class="grant-context-pill">
+                    Faculty of Science SoTL Grant · Department of Statistics, Waipapa Taumata Rau University of Auckland
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4-Column Presenter & Research Assistant Grid -->
+              <div class="investigator-grid" aria-label="Project Team">
+                <div class="inv-card lead">
+                  <div class="inv-name"><u>Liza Bolton</u></div>
+                  <p class="inv-role">Professional Teaching Fellow · Waipapa Taumata Rau University of Auckland</p>
+                </div>
+                <div class="inv-card">
+                  <div class="inv-name">Jingdi Sun</div>
+                  <p class="inv-role">Research Assistant · Waipapa Taumata Rau University of Auckland</p>
+                </div>
+                <div class="inv-card">
+                  <div class="inv-name">Ping Huang</div>
+                  <p class="inv-role">Research Assistant · Waipapa Taumata Rau University of Auckland</p>
+                </div>
+                <div class="inv-card">
+                  <div class="inv-name">Christy Sun</div>
+                  <p class="inv-role">Research Assistant · Waipapa Taumata Rau University of Auckland</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 2: PEPEHA & GREETINGS (#pepeha-greetings)
+               ================================================================ -->
+          <section class="slide" id="pepeha-greetings" data-title="Tēnā koutou katoa · Greetings" data-time="0:30–1:15"
+            data-notes="Deliver pepeha and Mandarin welcome warmly and unhurriedly: Tēnā koutou katoa, Ko Uropi me Kanata te whakapaparanga mai, engari, Ko Te Awamutu te whenua tupu, Ko O-tāwhao te mārae, Ko Tāmaki Makaurau te kāinga, Ko Liza taku ingoa, Tēnā tātou katoa. 欢迎大家. 我是 Liza. (Target: 45s)">
+            <h2>
+              <span>Tēnā koutou katoa</span>
+              <span class="h2-sub">Greetings</span>
+            </h2>
+            <div class="columns">
+              <div class="pepeha-left">
+                <p class="pepeha-lines">Tēnā koutou katoa,
+Ko Uropi me Kanata te whakapaparanga mai, engari,
+Ko Te Awamutu te whenua tupu
+Ko O-tāwhao te mārae
+Ko Tāmaki Makaurau te kāinga
+Ko Liza taku ingoa
+Tēnā tātou katoa</p>
+
+                <hr class="pepeha-rule" />
+
+                <div class="mandarin-plaque">欢迎大家. 我是 Liza.</div>
+              </div>
+
+              <div class="pepeha-right">
+                <div class="column-image-bg">
+                  <svg viewBox="0 0 440 520" role="img" aria-label="Museum-framed landscape illustration of rolling Waikato hills around Te Awamutu and the Waitematā harbour of Tāmaki Makaurau beneath the Southern Cross">
+                    <defs>
+                      <linearGradient id="aotearoaSky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#EDE5D8"/>
+                        <stop offset="100%" stop-color="#FAF8F5"/>
+                      </linearGradient>
+                    </defs>
+                    <rect width="440" height="520" fill="url(#aotearoaSky)"/>
+
+                    <!-- Warm Ochre Sun -->
+                    <circle cx="322" cy="104" r="44" fill="#B87333" opacity="0.22"/>
+                    <circle cx="322" cy="104" r="28" fill="#B87333" opacity="0.88"/>
+
+                    <!-- Southern Cross Stars in Deep Navy -->
+                    <g fill="#1B365D">
+                      <polygon points="118,58 121,68 131,68 123,74 126,84 118,78 110,84 113,74 105,68 115,68"/>
+                      <polygon points="118,150 121,160 131,160 123,166 126,176 118,170 110,176 113,166 105,160 115,160"/>
+                      <polygon points="74,104 76,112 84,112 78,117 80,125 74,120 68,125 70,117 64,112 72,112"/>
+                      <polygon points="160,96 162,104 170,104 164,109 166,117 160,112 154,117 156,109 150,104 158,104"/>
+                    </g>
+
+                    <!-- Distant Volcanic Maunga Silhouette -->
+                    <path d="M196,282 L270,210 L296,224 L322,212 L404,282 Z" fill="#C9BEB0" opacity="0.65"/>
+
+                    <!-- Rolling Waikato / Te Awamutu Hills -->
+                    <path d="M0,276 Q105,214 216,270 T440,248 L440,372 L0,372 Z" fill="#1B3B36" opacity="0.72"/>
+                    <path d="M0,312 Q138,256 274,314 T440,292 L440,396 L0,396 Z" fill="#1B3B36" opacity="0.92"/>
+                    <path d="M0,350 Q116,310 242,352 T440,330 L440,418 L0,418 Z" fill="#9E3B33" opacity="0.88"/>
+
+                    <!-- Waitematā Harbour Waters of Tāmaki Makaurau -->
+                    <rect x="0" y="384" width="440" height="136" fill="#1B365D"/>
+                    <path d="M0,410 Q55,396 110,410 T220,410 T330,410 T440,410" fill="none" stroke="#FAF8F5" stroke-width="2" opacity="0.62"/>
+                    <path d="M0,440 Q55,426 110,440 T220,440 T330,440 T440,440" fill="none" stroke="#B87333" stroke-width="2" opacity="0.8"/>
+                    <path d="M0,472 Q55,458 110,472 T220,472 T330,472 T440,472" fill="none" stroke="#FAF8F5" stroke-width="1.5" opacity="0.42"/>
+                  </svg>
+                  <img class="plate-art" style="display:none;" alt="Custom slide plate" />
+                  <button type="button" class="plate-swap-btn">Swap image</button>
+                </div>
+                <div class="gallery-plaque">
+                  <div class="artist">Te Awamutu &amp; Tāmaki Makaurau</div>
+                  <div class="meta">Aotearoa New Zealand · Editorial Plate</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 3: TANGATA WHENUA (#tangata-whenua)
+               ================================================================ -->
+          <section class="slide" id="tangata-whenua" data-title="Tangata whenua" data-time="1:15–2:00"
+            data-notes="Acknowledge Māori as tangata whenua under te Tiriti o Waitangi in Aotearoa, alongside the Anishinaabe, Haudenosaunee, and Mississaugas of the Credit under the Dish With One Spoon Treaty and Treaty 13 where earlier work took place, and experiences at Southwest University in China. Note Emily Kewageshig's artwork 'The Stillness of Winter' (2025). (Target: 45s)">
+            <h2>Tangata whenua</h2>
+            <div class="columns">
+              <div class="left-column-container">
+                <div class="left-column-main">
+                  <p>
+                    The teaching and research that informs this presentation were conducted on the traditional lands of <strong>Māori</strong> under te Tiriti o Waitangi and of the <strong>Anishinaabe</strong>, the <strong>Haudenosaunee</strong> and the <strong>Mississaugas of the Credit</strong> under the Dish With One Spoon Treaty and, more recently, Treaty 13 between the <strong>Mississaugas</strong> and the British Crown.
+                  </p>
+                  <p>
+                    Additional experiences at Southwest University, China, also informed this work.
+                  </p>
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist"><strong>Emily Kewageshig</strong></div>
+                  <div class="artwork-title"><em>The Stillness of Winter</em> (2025)</div>
+                  <div class="meta">Fine art print | <a href="https://www.emily-kewageshig.com/" target="_blank" rel="noopener noreferrer">www.emily-kewageshig.com</a></div>
+                </div>
+              </div>
+
+              <div class="column-image-bg" role="img" aria-label="A painting featuring stylized animals of the land, air, and water. A deer stands in front of a glowing sun on a hill, flanked by a flying eagle on the left and a snow-dusted pine tree on the right. Below them, a green sea turtle and a brown fish swim in flowing blue water against a bright blue background.">
+                <svg viewBox="0 0 400 540" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="winterSunGlow" cx="52%" cy="44%" r="34%">
+                      <stop offset="0%" stop-color="#FFFDF7"/>
+                      <stop offset="55%" stop-color="#F6E5A8"/>
+                      <stop offset="100%" stop-color="#2E9CE6" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <!-- Bright Blue Sky Background -->
+                  <rect width="400" height="540" fill="#2E9CE6"/>
+                  <circle cx="206" cy="238" r="150" fill="url(#winterSunGlow)"/>
+
+                  <!-- Glowing Sun Disc & Terracotta Rays -->
+                  <circle cx="206" cy="242" r="74" fill="#F4D36E" stroke="#9E3B33" stroke-width="4"/>
+                  <circle cx="206" cy="242" r="62" fill="none" stroke="#1B365D" stroke-width="2.5"/>
+                  <path d="M206,166 Q200,115 206,68 M132,226 Q86,214 42,190 M280,226 Q326,210 368,186"
+                        fill="none" stroke="#9E3B33" stroke-width="3.5" stroke-linecap="round"/>
+
+                  <!-- Flying Eagle (Top Left, Woodland Style) -->
+                  <g transform="translate(52, 42)">
+                    <path d="M88,125 C78,76 88,30 106,8 C114,38 118,78 122,124 Z" fill="#181C20"/>
+                    <path d="M96,114 C92,76 98,44 106,24 C110,48 112,80 114,114 Z" fill="#B87333"/>
+                    <path d="M84,148 C56,174 36,204 28,224 C52,216 78,194 98,166 Z" fill="#181C20"/>
+                    <path d="M82,154 C62,174 48,196 42,210 C60,202 78,184 92,162 Z" fill="#9E3B33"/>
+                    <ellipse cx="96" cy="146" rx="26" ry="15" transform="rotate(-18 96 146)" fill="#9E3B33" stroke="#181C20" stroke-width="3"/>
+                    <circle cx="66" cy="154" r="11" fill="#FAF8F5" stroke="#181C20" stroke-width="2.5"/>
+                    <polygon points="55,153 45,158 56,161" fill="#E8B84B" stroke="#181C20" stroke-width="1.5"/>
+                    <polygon points="120,136 148,128 150,148 122,148" fill="#FAF8F5" stroke="#181C20" stroke-width="2.5"/>
+                  </g>
+
+                  <!-- Snow-Dusted Pine Tree (Right) -->
+                  <g transform="translate(278, 92)">
+                    <path d="M36,204 L36,12" stroke="#181C20" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M36,16 Q16,54 4,76 Q24,66 36,54 Q52,68 72,82 Q56,52 36,16 Z" fill="#181C20"/>
+                    <path d="M36,24 Q22,52 12,68 Q26,60 36,50 Z" fill="#FAF8F5"/>
+                    <path d="M36,68 Q12,106 0,132 Q22,118 36,104 Q56,122 80,142 Q60,104 36,68 Z" fill="#181C20"/>
+                    <path d="M36,76 Q18,104 8,122 Q24,112 36,100 Z" fill="#FAF8F5"/>
+                    <path d="M36,122 Q10,162 -2,190 Q22,174 36,158 Q58,176 84,196 Q62,158 36,122 Z" fill="#181C20"/>
+                    <path d="M40,130 Q58,158 74,184 Q56,170 40,154 Z" fill="#2F8E66"/>
+                  </g>
+
+                  <!-- Standing Deer on Hill (Center) -->
+                  <g transform="translate(120, 162)">
+                    <path d="M126,38 L122,8 M124,24 L114,16 M136,38 L146,10 M141,24 L152,18" stroke="#181C20" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M34,116 L18,162 M58,118 L54,162 M104,114 L106,162 M116,112 L134,158" stroke="#181C20" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M22,94 C22,72 52,66 96,68 L118,40 L146,46 L142,60 L124,62 L116,108 C92,116 44,116 22,94 Z"
+                          fill="#A87442" stroke="#181C20" stroke-width="4.5" stroke-linejoin="round"/>
+                    <rect x="52" y="76" width="34" height="22" rx="10" fill="#3B6EA5" stroke="#181C20" stroke-width="2.5"/>
+                    <circle cx="104" cy="84" r="11" fill="#9E3B33" stroke="#E8B84B" stroke-width="3"/>
+                  </g>
+
+                  <!-- Flowing Blue Water & Snow Bank -->
+                  <path d="M74,332 Q178,312 292,324 L322,306 Q268,412 182,462 Q86,436 74,332 Z"
+                        fill="#1D6FA5" stroke="#181C20" stroke-width="3.5"/>
+                  <path d="M84,330 Q182,312 288,324" fill="none" stroke="#FAF8F5" stroke-width="4.5"/>
+                  <path d="M112,418 Q186,384 246,356" fill="none" stroke="#FAF8F5" stroke-width="4" stroke-linecap="round"/>
+
+                  <!-- Green Sea Turtle (Lower Left in Water) -->
+                  <g transform="translate(88, 344)">
+                    <ellipse cx="46" cy="44" rx="28" ry="34" transform="rotate(-24 46 44)" fill="#2F8E66" stroke="#181C20" stroke-width="3.5"/>
+                    <circle cx="46" cy="44" r="16" fill="#63B88C" stroke="#181C20" stroke-width="2"/>
+                    <circle cx="74" cy="24" r="7" fill="#2F8E66" stroke="#181C20" stroke-width="2.5"/>
+                    <path d="M22,22 Q10,16 14,32 M68,46 Q84,48 76,62 M24,68 Q12,78 26,80" fill="none" stroke="#181C20" stroke-width="3.5" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- Brown Woodland Fish (Bottom Right) -->
+                  <g transform="translate(168, 412) rotate(-24)">
+                    <path d="M0,48 C28,24 78,22 114,42 L144,24 L136,48 L148,68 L114,56 C78,74 28,72 0,48 Z"
+                          fill="#A87442" stroke="#181C20" stroke-width="3.5" stroke-linejoin="round"/>
+                    <ellipse cx="64" cy="48" rx="28" ry="10" fill="#9E3B33" stroke="#181C20" stroke-width="2"/>
+                    <circle cx="16" cy="47" r="4.5" fill="#FAF8F5"/>
+                  </g>
+                </svg>
+                <img class="plate-art" style="display:none;" alt="The Stillness of Winter (2025) by Emily Kewageshig" />
+                <button type="button" class="plate-swap-btn">Swap image</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 4: IN THEIR OWN WORDS — CHINESE TIKTOK ELL STORY (#tiktok-in-their-own-words)
+               ================================================================ -->
+          <section class="slide" id="tiktok-in-their-own-words" data-title="In their own words · Student voice" data-time="2:00–3:00"
+            data-notes="Pause here to share the viral video created by a Chinese English language learner on Chinese TikTok—just a quiet photograph of her lecture room, with a single line in the left corner: 'Dear professor, you would feel that I am much smarter, kinder and funnier if I could speak my own language to you.' That captures why this project is called 'In their own words': language is never just a technical skill; it is how students bring their intellect, warmth, and identity into our classrooms. (Target: 60s)">
+            <h2>In their own words</h2>
+            <div class="columns">
+              <div class="left-column-container" style="width:56%;">
+                <div class="left-column-main">
+                  <div class="story-narrative">
+                    There was a famous video on Chinese TikTok created by a Chinese English language learner (ELL). There was nothing beside a photo of her lecture room and a text in the left corner of the image, saying
+                    <span class="story-quote-highlight">“Dear professor, you would feel that I am much smarter, kinder and funnier if I could speak my own language to you.”</span>
+                  </div>
+
+                  <div class="callout-box forest">
+                    <strong>Why this resonates in Statistics:</strong> Language is not merely a technical skill—it is part of culture, identity, and how students make their intelligence, humour, and humanity known to us.
+                  </div>
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist">Lived Student Experience</div>
+                  <div class="meta">Inspiration behind <em>In their own words</em> · Classroom belonging &amp; voice</div>
+                </div>
+              </div>
+
+              <div style="width:44%; display:flex; flex-direction:column; gap:14px;">
+                <div class="lecture-photo-frame" role="img" aria-label="Quiet university lecture hall with tiered wooden desks and podium, overlaid in the bottom-left corner with the quote: Dear professor, you would feel that I am much smarter, kinder and funnier if I could speak my own language to you.">
+                  <svg viewBox="0 0 560 540" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="hallWall" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#273344"/>
+                        <stop offset="55%" stop-color="#1C2532"/>
+                        <stop offset="100%" stop-color="#141B24"/>
+                      </linearGradient>
+                      <radialGradient id="projectorGlow" cx="50%" cy="28%" r="48%">
+                        <stop offset="0%" stop-color="#FFFDF8" stop-opacity="0.22"/>
+                        <stop offset="100%" stop-color="#1C2532" stop-opacity="0"/>
+                      </radialGradient>
+                    </defs>
+
+                    <!-- Lecture Hall Walls & Ambient Lighting -->
+                    <rect width="560" height="540" fill="url(#hallWall)"/>
+                    <rect width="560" height="540" fill="url(#projectorGlow)"/>
+
+                    <!-- Acoustic Slatted Ceiling & Warm Recessed Lights -->
+                    <polygon points="0,0 560,0 470,84 90,84" fill="#171E28"/>
+                    <ellipse cx="180" cy="42" rx="18" ry="5" fill="#F6E5A8" opacity="0.7"/>
+                    <ellipse cx="280" cy="42" rx="20" ry="5.5" fill="#FFF8DC" opacity="0.85"/>
+                    <ellipse cx="380" cy="42" rx="18" ry="5" fill="#F6E5A8" opacity="0.7"/>
+
+                    <!-- Front Projection Screen & Chalkboard -->
+                    <rect x="128" y="96" width="304" height="148" rx="3" fill="#EAE6DF" stroke="#455264" stroke-width="4"/>
+                    <!-- Subtle Statistical Curve on Screen -->
+                    <path d="M168,214 Q220,214 248,164 T280,126 T312,164 T392,214" fill="none" stroke="#1B365D" stroke-width="2.5" opacity="0.45"/>
+                    <line x1="158" y1="214" x2="402" y2="214" stroke="#5A626D" stroke-width="1.5" opacity="0.45"/>
+
+                    <!-- Lecturer Podium (Front Left-Center) -->
+                    <polygon points="154,234 196,234 192,286 158,286" fill="#5D3E28"/>
+                    <rect x="148" y="230" width="54" height="7" rx="2" fill="#7B5336"/>
+
+                    <!-- Tiered Wooden Lecture Desks (Foreground Perspective) -->
+                    <!-- Row 3 (Furthest) -->
+                    <polygon points="88,286 472,286 492,306 68,306" fill="#6E492F"/>
+                    <polygon points="68,306 492,306 492,332 68,332" fill="#462E1D"/>
+
+                    <!-- Row 2 (Middle) -->
+                    <polygon points="44,336 516,336 542,366 18,366" fill="#7D5436"/>
+                    <polygon points="18,366 542,366 542,402 18,402" fill="#4F3421"/>
+
+                    <!-- Row 1 (Student's Foreground Desk with Open Notebook & Pen) -->
+                    <polygon points="0,406 560,406 560,468 0,468" fill="#8C5E3C"/>
+                    <polygon points="0,468 560,468 560,540 0,540" fill="#3B2618"/>
+
+                    <!-- Open Notebook on Foreground Desk (Right Side) -->
+                    <g transform="translate(362, 414) rotate(-6)">
+                      <rect x="0" y="0" width="128" height="44" rx="3" fill="#FAF8F5" stroke="#C9BEB0" stroke-width="1.5"/>
+                      <line x1="64" y1="2" x2="64" y2="42" stroke="#9E3B33" stroke-width="1.2" opacity="0.5"/>
+                      <line x1="12" y1="12" x2="54" y2="12" stroke="#5A626D" stroke-width="1.2" opacity="0.4"/>
+                      <line x1="12" y1="20" x2="50" y2="20" stroke="#5A626D" stroke-width="1.2" opacity="0.4"/>
+                      <line x1="74" y1="12" x2="116" y2="12" stroke="#5A626D" stroke-width="1.2" opacity="0.4"/>
+                      <line x1="74" y1="20" x2="108" y2="20" stroke="#5A626D" stroke-width="1.2" opacity="0.4"/>
+                    </g>
+                  </svg>
+
+                  <!-- Text in the bottom-left corner of the image -->
+                  <div class="tiktok-corner-caption">
+                    “Dear professor, you would feel that I am much smarter, kinder and funnier if I could speak my own language to you.”
+                  </div>
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist">Lecture Room Reflection</div>
+                  <div class="meta">Chinese ELL creator · Viral reflection on classroom voice</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 5: MOTIVATION — WHY THIS MATTERS NOW (#motivation)
+               ================================================================ -->
+          <section class="slide" id="motivation" data-title="Motivation: Why this matters now" data-time="3:00–4:15"
+            data-notes="Why does this matter right now? At Waipapa Taumata Rau University of Auckland, 21% of students were international in 2024, and 62.3% of international students come from China—alongside our Taumata Teitei commitment to student-centric learning and expanding transnational education agreements in China. Importantly, International does not equal ELL, and many Chinese students arrive from exam-driven pipelines like the Gaokao and CET that prioritize grammar and reading over live disciplinary speaking in Statistics. (Target: 75s)">
+            <h2>Motivation: Why this matters now</h2>
+            <div class="columns">
+              <div class="left-column-container" style="width:54%;">
+                <div class="left-column-main">
+                  <div class="stat-row">
+                    <div class="stat-card">
+                      <div class="stat-num">21%</div>
+                      <div class="stat-desc">of University of Auckland students were international in 2024, alongside expanding transnational agreements in China.</div>
+                      <div class="stat-src">UoA 2024 Annual Report · Taumata Teitei</div>
+                    </div>
+                    <div class="stat-card accent">
+                      <div class="stat-num">62.3%</div>
+                      <div class="stat-desc">of UoA international students come from China—our largest single source country.</div>
+                      <div class="stat-src">UoA 2024 Annual Report</div>
+                    </div>
+                  </div>
+
+                  <ul class="editorial-list">
+                    <li><strong>International &ne; ELL:</strong> ELLs speak another language more fluently than English and need support to engage confidently in academic English; many domestic students are also multilingual.</li>
+                    <li><strong>Exam-driven pipeline:</strong> High-stakes testing (<em>Gaokao</em>, CET) emphasizes grammar and reading over live disciplinary speaking and statistical communication.</li>
+                  </ul>
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist">Demographic &amp; Pedagogical Context</div>
+                  <div class="meta">Bolton et al. (2026) · Waipapa Taumata Rau University of Auckland</div>
+                </div>
+              </div>
+
+              <!-- Vector Data Visualization matching china_perc.png -->
+              <div class="column-image-bg" style="width:46%; padding:24px 26px; background:#FAF8F5;">
+                <svg viewBox="0 0 540 500" role="img" aria-label="Horizontal bar and dot chart showing percentage of international students from China across Anglophone countries and partner universities: Australia 22%, Canada 21% with University of Toronto at 52%, United Kingdom 23%, and New Zealand 50% with University of Auckland at 62%">
+                  <rect width="540" height="500" fill="#FAF8F5"/>
+
+                  <!-- Chart Title & Subtitle -->
+                  <text x="16" y="34" font-family="Newsreader, serif" font-size="22" font-weight="600" fill="#1B365D">Percentage of international students from China</text>
+                  <text x="16" y="58" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#5A626D">Measures from mid-2020s reporting cycles</text>
+
+                  <!-- Legend -->
+                  <rect x="16" y="76" width="16" height="16" rx="3" fill="#B8C4D4"/>
+                  <text x="38" y="89" font-family="Source Sans 3, sans-serif" font-size="15" fill="#1F242B">National higher-ed share</text>
+                  <circle cx="236" cy="84" r="7" fill="#0022FF"/>
+                  <text x="250" y="89" font-family="Source Sans 3, sans-serif" font-size="15" font-weight="600" fill="#0022FF">Author institution share</text>
+
+                  <!-- Gridlines (0% to 70% mapped to x=145..505 -> 5.14px per %) -->
+                  <g stroke="rgba(27,54,93,0.12)" stroke-width="1">
+                    <line x1="145" y1="112" x2="145" y2="392"/>
+                    <line x1="248" y1="112" x2="248" y2="392" stroke-dasharray="4 4"/>
+                    <line x1="351" y1="112" x2="351" y2="392" stroke-dasharray="4 4"/>
+                    <line x1="454" y1="112" x2="454" y2="392" stroke-dasharray="4 4"/>
+                  </g>
+
+                  <!-- X-Axis Labels -->
+                  <text x="145" y="414" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#5A626D">0%</text>
+                  <text x="248" y="414" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#5A626D">20%</text>
+                  <text x="351" y="414" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#5A626D">40%</text>
+                  <text x="454" y="414" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12.5" fill="#5A626D">60%</text>
+
+                  <!-- Row 1: Australia (22% -> width = 113px) -->
+                  <text x="133" y="152" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="18" font-weight="600" fill="#1F242B">Australia</text>
+                  <rect x="145" y="128" width="113" height="36" rx="4" fill="#B8C4D4"/>
+                  <text x="266" y="152" font-family="JetBrains Mono, monospace" font-size="15" font-weight="600" fill="#1B365D">22%</text>
+
+                  <!-- Row 2: Canada (21% -> width = 108px) + UofT Dot (52% -> x = 145 + 267 = 412) -->
+                  <text x="133" y="222" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="18" font-weight="600" fill="#1F242B">Canada</text>
+                  <rect x="145" y="198" width="108" height="36" rx="4" fill="#B8C4D4"/>
+                  <text x="261" y="222" font-family="JetBrains Mono, monospace" font-size="15" font-weight="600" fill="#1B365D">21%</text>
+                  <line x1="253" y1="216" x2="412" y2="216" stroke="#0022FF" stroke-width="2.5" stroke-dasharray="4 3"/>
+                  <circle cx="412" cy="216" r="8.5" fill="#0022FF"/>
+                  <text x="412" y="196" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="14.5" font-weight="700" fill="#0022FF">52% U of Toronto</text>
+
+                  <!-- Row 3: United Kingdom (23% -> width = 118px) -->
+                  <text x="133" y="292" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="18" font-weight="600" fill="#1F242B">United Kingdom</text>
+                  <rect x="145" y="268" width="118" height="36" rx="4" fill="#B8C4D4"/>
+                  <text x="271" y="292" font-family="JetBrains Mono, monospace" font-size="15" font-weight="600" fill="#1B365D">23%</text>
+
+                  <!-- Row 4: New Zealand (50% -> width = 257px) + UoA Dot (62% -> x = 145 + 319 = 464) -->
+                  <text x="133" y="362" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="18" font-weight="700" fill="#1B365D">New Zealand</text>
+                  <rect x="145" y="338" width="257" height="36" rx="4" fill="#9E3B33" opacity="0.85"/>
+                  <text x="392" y="362" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" font-weight="600" fill="#FAF8F5">50%</text>
+                  <line x1="402" y1="356" x2="464" y2="356" stroke="#0022FF" stroke-width="2.5" stroke-dasharray="4 3"/>
+                  <circle cx="464" cy="356" r="9" fill="#0022FF"/>
+                  <text x="448" y="328" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="14.5" font-weight="700" fill="#0022FF">62% U of Auckland</text>
+
+                  <!-- Source Footer -->
+                  <line x1="16" y1="436" x2="524" y2="436" stroke="rgba(27,54,93,0.15)"/>
+                  <text x="16" y="458" font-family="JetBrains Mono, monospace" font-size="11.5" fill="#5A626D">Sources: Australian Dept of Education (2025); Statistics Canada (2024);</text>
+                  <text x="16" y="476" font-family="JetBrains Mono, monospace" font-size="11.5" fill="#5A626D">Education Counts NZ (2024); HESA UK (2023); UoA &amp; UofT Annual Reports.</text>
+                </svg>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 6: PLANNED METHODOLOGY — SEQUENCED MIXED-METHODS (#methodology)
+               ================================================================ -->
+          <section class="slide" id="methodology" data-title="Planned methodology" data-time="4:15–5:45"
+            data-notes="Our planned study uses a sequenced exploratory mixed-methods design—QUAL to QUANT to QUAL—across 2026. Phase 1 begins with semi-structured focus groups with ELL students and Teaching Assistants across UG and PG Statistics courses. Phase 2 translates those themes into an ELL-piloted, cohort-wide survey deployed in Jul–Aug 2026 to quantify prevalence. Phase 3 conducts targeted follow-up focus groups in Sep–Oct to unpack key patterns and co-design practical staff guides, an NZSA presentation, and a SERJ manuscript. Anchoring all three phases is a cultural safety and reciprocity protocol: experienced facilitators, advance guiding questions, the option to participate in Mandarin Chinese with translation, and voucher koha plus a survey prize draw. (Target: 90s)">
+            <h2>Planned methodology: Sequenced mixed-methods</h2>
+            <div class="methodology-wrap">
+              <!-- 3-Phase Horizontal Architectural Pipeline -->
+              <div class="pipeline-grid">
+                <!-- Phase 1 -->
+                <div class="phase-card">
+                  <div>
+                    <div class="phase-badge">
+                      <span>PHASE 1 · QUAL</span>
+                      <span>APR 2026</span>
+                    </div>
+                    <h3>Initial Focus Groups</h3>
+                    <p>Semi-structured sessions with ELL students &amp; teaching assistants (TAs) across UG &amp; PG Statistics courses to surface lived barriers and needs.</p>
+                  </div>
+                  <div class="phase-output">Output &rarr; Emergent themes &amp; item pool</div>
+                </div>
+
+                <div class="pipeline-arrow" aria-hidden="true">&rarr;</div>
+
+                <!-- Phase 2 -->
+                <div class="phase-card quant">
+                  <div>
+                    <div class="phase-badge">
+                      <span>PHASE 2 · QUANT</span>
+                      <span>JUL–AUG 2026</span>
+                    </div>
+                    <h3>Cohort-Wide Survey</h3>
+                    <p>Culturally sensitive instrument refined from Phase 1 themes and piloted with ELL students; deployed across taught UG &amp; PG Statistics courses to quantify prevalence.</p>
+                  </div>
+                  <div class="phase-output">Output &rarr; Cross-course prevalence &amp; patterns</div>
+                </div>
+
+                <div class="pipeline-arrow" aria-hidden="true">&rarr;</div>
+
+                <!-- Phase 3 -->
+                <div class="phase-card qual2">
+                  <div>
+                    <div class="phase-badge" style="color:var(--forest);">
+                      <span>PHASE 3 · QUAL</span>
+                      <span>SEP–OCT 2026</span>
+                    </div>
+                    <h3>Targeted Follow-Up Focus Groups</h3>
+                    <p>Small, focused discussions unpacking key statistical patterns from the survey in depth, feeding into staff teaching resources, NZSA conference presentation, and a <em>SERJ</em> manuscript (Nov–Dec 2026).</p>
+                  </div>
+                  <div class="phase-output">Output &rarr; Staff toolkits · NZSA · SERJ paper</div>
+                </div>
+              </div>
+
+              <!-- Bottom Cultural Safety & Reciprocity Ribbon -->
+              <div class="safety-ribbon">
+                <div class="safety-ribbon-title">Cultural Safety, Manaakitanga &amp; Ethical Reciprocity Protocol</div>
+                <div class="safety-pills">
+                  <span class="safety-pill">Experienced facilitators</span>
+                  <span class="safety-pill">Guiding questions shared in advance</span>
+                  <span class="safety-pill">Option to participate in Mandarin Chinese (with translation)</span>
+                  <span class="safety-pill">Voucher <em>koha</em> for focus groups &amp; prize draw incentive for survey respondents</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 7: LEARNING SO FAR — TALK DATA TO ME? (#paper-learnings)
+               ================================================================ -->
+          <section class="slide" id="paper-learnings" data-title="Learning so far: Talk Data to Me?" data-time="5:45–7:30"
+            data-notes="Alongside designing this empirical study, our international team has synthesized what we have learned so far in our ICOTS 2026 paper, 'Talk Data to Me?'. Three key takeaways stand out: First, statistics has a multi-layered language with severe lexical ambiguity—everyday words like significance, random, model, and average carry narrow technical definitions. Second, research shows inserting three-second pauses at grammatical boundaries supports the four-step translation-thinking cycle far better than speaking unnaturally slowly, especially when paired with spoken plus written prompts. Third, pre-exam data immersion reduces timed cognitive load, and classroom trials show big gains: modified Think-Pair-Share with anonymous writing lifted participation in China from near-zero to 50–70%, while a University of Toronto study of 1,697 students saw 57% of ELLs who started at Poor or Adequate writing reach Good or above by course end. (Target: 105s)">
+            <h2>Learning so far: <em>Talk Data to Me?</em></h2>
+            <div class="columns">
+              <div class="left-column-container" style="width:62%;">
+                <div class="insight-stack">
+                  <div class="insight-card">
+                    <h3>1. Multi-layered language &amp; lexical ambiguity</h3>
+                    <p>Statistics bridges mathematical notation, academic prose, and everyday words with distinct technical meanings (<em>significance, random, model, variable, average</em>) alongside hedging language.</p>
+                  </div>
+
+                  <div class="insight-card terracotta">
+                    <h3>2. Pausing &gt; speaking slowly &amp; multimodal prompts</h3>
+                    <p>Inserting <strong>3-second pauses</strong> at grammatical boundaries supports the 4-step translation–thinking cycle far better than artificial slow speech, paired with <strong>spoken + written</strong> instructions and clear translanguaging norms.</p>
+                  </div>
+
+                  <div class="insight-card forest">
+                    <h3>3. Scaffolded immersion &amp; classroom evidence</h3>
+                    <p>Pre-exam <strong>data immersion</strong> reduces timed cognitive load; modified <strong>Think–Pair–Share</strong> with anonymous writing lifted China classroom responses from <strong>~0% to 50–70%</strong>, while a UofT survey (<code>N = 1,697</code>, 76–83% ELL) saw <strong>57%</strong> of ELLs starting at <em>Poor/Adequate</em> writing reach <em>Good+</em> by course end.</p>
+                  </div>
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist">Bolton, Moon, Caetano, Sparks, Xie, Huang, Sun &amp; Sun (2026)</div>
+                  <div class="meta"><em>Talk Data to Me? Supporting English Language Learners in Statistics and Data Science</em></div>
+                </div>
+              </div>
+
+              <!-- Museum Plate: Qiu Ying — The hall of scenic beauty 有美堂圖 -->
+              <div style="width:38%; display:flex; flex-direction:column; gap:14px;">
+                <div class="column-image-bg" style="width:100%; flex:1;" role="img" aria-label="Traditional Chinese ink and mineral pigment landscape scroll painting inspired by Qiu Ying's The hall of scenic beauty, depicting a lakeside pavilion nestled beneath misty pine mountains and poetic calligraphy">
+                  <svg viewBox="0 0 420 520" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="silkScroll" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#E7DEC8"/>
+                        <stop offset="50%" stop-color="#EFE8D6"/>
+                        <stop offset="100%" stop-color="#DFD3B8"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Aged Silk Scroll Ground -->
+                    <rect width="420" height="520" fill="url(#silkScroll)"/>
+                    <rect x="14" y="14" width="392" height="492" fill="none" stroke="#9E8B6C" stroke-width="1.5" opacity="0.55"/>
+
+                    <!-- Distant Ink Wash Mountains -->
+                    <path d="M24,230 Q92,118 164,178 Q226,88 304,158 Q356,122 396,196 L396,290 L24,290 Z" fill="#6F7D75" opacity="0.34"/>
+                    <path d="M126,256 Q204,132 282,198 Q338,148 396,216 L396,306 L126,306 Z" fill="#465852" opacity="0.58"/>
+
+                    <!-- Mineral Azurite & Malachite Cliff Accents -->
+                    <path d="M214,196 Q256,162 308,194 Q278,224 236,222 Z" fill="#2D6A68" opacity="0.48"/>
+
+                    <!-- Morning Mist Band -->
+                    <rect x="24" y="256" width="372" height="36" fill="#FAF5E8" opacity="0.58"/>
+
+                    <!-- Lakeside Pavilion (The Hall of Scenic Beauty 有美堂) -->
+                    <g transform="translate(154, 258)">
+                      <!-- Stone Terrace -->
+                      <rect x="8" y="64" width="128" height="16" fill="#7D7261"/>
+                      <!-- Pillars -->
+                      <line x1="24" y1="34" x2="24" y2="64" stroke="#8B3A2B" stroke-width="3.5"/>
+                      <line x1="56" y1="34" x2="56" y2="64" stroke="#8B3A2B" stroke-width="3.5"/>
+                      <line x1="88" y1="34" x2="88" y2="64" stroke="#8B3A2B" stroke-width="3.5"/>
+                      <line x1="120" y1="34" x2="120" y2="64" stroke="#8B3A2B" stroke-width="3.5"/>
+                      <!-- Sweeping Eaves Roof -->
+                      <path d="M0,36 Q72,22 144,36 L124,18 Q72,10 20,18 Z" fill="#2B333A"/>
+                      <path d="M-4,36 Q72,24 148,36" fill="none" stroke="#B87333" stroke-width="2"/>
+                    </g>
+
+                    <!-- Foreground Pine Trees & Scholarly Bank -->
+                    <path d="M24,358 Q138,326 244,376 Q326,356 396,386 L396,506 L24,506 Z" fill="#5A5343" opacity="0.72"/>
+                    <g stroke="#262925" stroke-width="3.5" fill="none">
+                      <path d="M78,440 Q68,386 86,336"/>
+                      <path d="M86,356 L54,344 M82,374 L116,362"/>
+                    </g>
+                    <!-- Pine Needle Clusters -->
+                    <g fill="#234238" opacity="0.88">
+                      <ellipse cx="54" cy="342" rx="26" ry="9"/>
+                      <ellipse cx="88" cy="332" rx="30" ry="10"/>
+                      <ellipse cx="116" cy="360" rx="26" ry="9"/>
+                    </g>
+
+                    <!-- Tranquil Lake Ripples -->
+                    <path d="M196,422 Q248,416 300,422 M224,446 Q284,440 344,446 M180,470 Q244,464 310,470"
+                          fill="none" stroke="#4D666A" stroke-width="1.4" opacity="0.5"/>
+
+                    <!-- Vertical Chinese Title Inscription & Red Seal Stamp -->
+                    <text x="58" y="64" font-family="Noto Sans SC, serif" font-size="22" fill="#2B2620" writing-mode="tb" letter-spacing="4">有美堂圖</text>
+                    <rect x="47" y="164" width="22" height="22" rx="2" fill="#9E3B33"/>
+                    <text x="58" y="180" text-anchor="middle" font-family="Noto Sans SC, serif" font-size="11" fill="#FAF8F5">仇英</text>
+                  </svg>
+                  <img class="plate-art" style="display:none;" alt="The hall of scenic beauty 有美堂圖 by Qiu Ying" />
+                  <button type="button" class="plate-swap-btn">Swap image</button>
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist"><strong>Qiu Ying</strong> <span style="font-family:var(--font-sc); font-weight:500;">仇英</span> (c. 1494–1552)</div>
+                  <div class="artwork-title"><em>The hall of scenic beauty</em> <span style="font-family:var(--font-sc); font-style:normal;">有美堂圖</span></div>
+                  <div class="meta">Freer Gallery of Art · Smithsonian Institution</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 8: WILL THIS BE USEFUL TO ANY OF US? — BABEL FISH (#ai-babel-fish)
+               ================================================================ -->
+          <section class="slide" id="ai-babel-fish" data-title="Will this be useful? · AI Babel Fish" data-time="7:30–9:00"
+            data-notes="Now for the elephant in the room—quite literally painted here by Max Ernst in 1921: 'AI babel fish for all?' In The Hitchhiker's Guide to the Galaxy, Douglas Adams imagined a little yellow fish you pop in your ear to understand every language instantly. With AI wearables and real-time translation advancing fast, will supporting ELLs still matter? Yes—because even as AI changes how we produce translated outputs, the human process of statistical reasoning, checking translation quality for technical terms, and building genuine classroom connection remains essential. (Target: 90s)">
+            <h2>Will this be useful to any of us?</h2>
+            <div class="columns">
+              <div class="left-column-container">
+                <div class="left-column-main">
+                  <ul class="editorial-list" style="gap:22px;">
+                    <li>
+                      The <strong>elephant</strong> in the room? <strong>AI babel fish for all?</strong>
+                      <button type="button" class="babel-trigger" id="babelTrigger" aria-expanded="false" aria-controls="babelPopover">
+                        <span>&#128031; Inspect Babel Fish</span>
+                      </button>
+                    </li>
+                    <li>
+                      <strong>The importance of process:</strong> While AI and real-time translation tools will change <em>how</em> we approach products, the human process of statistical reasoning, checking translation quality, and classroom connection continues to matter.
+                    </li>
+                  </ul>
+
+                  <!-- Interactive Hover / Click Anatomical Babel Fish Card -->
+                  <div class="babel-popover" id="babelPopover" role="region" aria-label="Hitchhiker's Guide Babel Fish Anatomical Diagram">
+                    <svg viewBox="0 0 180 110" style="width:170px; height:104px; flex-shrink:0;" role="img" aria-label="Anatomical diagram of a small yellow leechlike Babel Fish">
+                      <rect x="2" y="2" width="176" height="106" rx="6" fill="#101824" stroke="#F2C94C" stroke-width="1.5"/>
+                      <!-- Blueprint Grid -->
+                      <line x1="10" y1="55" x2="170" y2="55" stroke="#F2C94C" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.4"/>
+                      <line x1="90" y1="10" x2="90" y2="100" stroke="#F2C94C" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.4"/>
+                      <!-- Small Yellow Leechlike Babel Fish -->
+                      <path d="M32,56 C48,34 94,30 132,48 L154,36 L146,56 L156,74 L132,62 C94,78 48,74 32,56 Z"
+                            fill="#F2C94C" stroke="#FFF8DC" stroke-width="1.5"/>
+                      <!-- Brainwave / Telepathic Excretion Waves -->
+                      <path d="M58,48 Q74,40 90,48 T122,48" fill="none" stroke="#182334" stroke-width="1.8"/>
+                      <circle cx="46" cy="52" r="3" fill="#182334"/>
+                      <text x="90" y="96" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#FCE38A">FIG 42. BABEL FISH</text>
+                    </svg>
+                    <div>
+                      <div class="babel-quote">
+                        “THE BABEL FISH IS SMALL, YELLOW, LEECHLIKE, AND PROBABLY THE ODDEST THING IN THE UNIVERSE.”
+                      </div>
+                      <div class="babel-sub">
+                        Douglas Adams (1979) · Feeds on brainwave energy and translates every language—yet cannot replace human statistical judgment or trust.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist"><strong>Max Ernst</strong> (Germany, b.1891–d.1976)</div>
+                  <div class="artwork-title"><em>The Elephant Celebes (Celebes)</em> (1921)</div>
+                  <div class="meta">Oil on canvas | Tate Modern, London</div>
+                </div>
+              </div>
+
+              <!-- Surrealist SVG Homage to Max Ernst's The Elephant Celebes (1921) -->
+              <div class="column-image-bg" role="img" aria-label="Surrealist painting homage to Max Ernst's The Elephant Celebes (1921), depicting a monumental mechanical cylindrical elephant with horned head and curving trunk standing beneath a dreamlike sky">
+                <svg viewBox="0 0 420 540" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ernstSky" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#6B8E9B"/>
+                      <stop offset="62%" stop-color="#A8B8B2"/>
+                      <stop offset="100%" stop-color="#C8B998"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Surrealist Sky & Low Desert Horizon -->
+                  <rect width="420" height="390" fill="url(#ernstSky)"/>
+                  <rect x="0" y="390" width="420" height="150" fill="#B59E7A"/>
+                  <line x1="0" y1="390" x2="420" y2="390" fill="none" stroke="#5D5140" stroke-width="1.5"/>
+
+                  <!-- Floating Surrealist Smoke Trails & Celestial Ring (Top Left) -->
+                  <path d="M54,116 Q88,92 126,112 T196,94" fill="none" stroke="#FAF8F5" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+                  <circle cx="88" cy="144" r="18" fill="none" stroke="#2B3036" stroke-width="3.5"/>
+                  <circle cx="88" cy="144" r="7" fill="#9E3B33"/>
+
+                  <!-- Right-Side Surrealist Totem Tower -->
+                  <rect x="348" y="182" width="22" height="214" fill="#3B454E"/>
+                  <polygon points="342,182 376,182 359,154" fill="#9E3B33"/>
+                  <circle cx="359" cy="212" r="7" fill="#E6C37A"/>
+
+                  <!-- Monumental Mechanical Elephant Celebes -->
+                  <g transform="translate(46, 136)">
+                    <!-- Sturdy Pillar Legs -->
+                    <rect x="64" y="218" width="44" height="84" rx="6" fill="#2A3138" stroke="#181C20" stroke-width="3"/>
+                    <rect x="192" y="214" width="46" height="88" rx="6" fill="#2A3138" stroke="#181C20" stroke-width="3"/>
+                    <!-- Metallic Collar & Industrial Boiler Torso -->
+                    <ellipse cx="164" cy="158" rx="112" ry="86" fill="#343D46" stroke="#181C20" stroke-width="3.5"/>
+                    <!-- Riveted Hatch & Red/Ochre Mechanical Eye Disc -->
+                    <circle cx="176" cy="150" r="46" fill="#46515C" stroke="#181C20" stroke-width="3"/>
+                    <circle cx="176" cy="150" r="24" fill="#B87333" stroke="#181C20" stroke-width="2.5"/>
+                    <circle cx="176" cy="150" r="9" fill="#FAF8F5"/>
+
+                    <!-- Horned Bull-Head Silhouette (Left) -->
+                    <path d="M68,128 L24,108 L48,144 L22,168 L68,162 Z" fill="#1F242B"/>
+                    <path d="M36,112 Q10,76 34,54" fill="none" stroke="#FAF8F5" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M54,110 Q42,72 68,56" fill="none" stroke="#FAF8F5" stroke-width="6" stroke-linecap="round"/>
+
+                    <!-- Corrugated Tubular Trunk -->
+                    <path d="M64,174 C18,196 14,254 54,284 C74,298 96,286 92,268 C88,252 66,258 58,244 C46,224 64,202 88,194"
+                          fill="#4D5863" stroke="#181C20" stroke-width="3.5" stroke-linejoin="round"/>
+                    <!-- Ribbed Trunk Rings -->
+                    <path d="M36,204 L52,214 M28,228 L46,232 M34,254 L52,250" stroke="#181C20" stroke-width="2.5"/>
+
+                    <!-- Top Yellow Fin / Crest -->
+                    <polygon points="148,72 174,34 198,74" fill="#D9A74A" stroke="#181C20" stroke-width="2.5"/>
+                  </g>
+                </svg>
+                <img class="plate-art" style="display:none;" alt="The Elephant Celebes (1921) by Max Ernst" />
+                <button type="button" class="plate-swap-btn">Swap image</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               SLIDE 9: NGĀ MIHI & THANK YOU (#thanks)
+               ================================================================ -->
+          <section class="slide" id="thanks" data-title="Ngā mihi & thank you" data-time="9:00–10:00"
+            data-notes="Ngā mihi nui, 谢谢, and thank you very much for listening. Warmest thanks to my Associate Investigators and partners Emma Lehrke, Lars Thomsen, and Leila Boyle, and to our Research Assistants Jingdi Sun, Ping Huang, and Christy Sun, as well as the students, Teaching Assistants, and colleagues who guide this work, and the Faculty of Science SoTL Grant at Waipapa Taumata Rau University of Auckland. (Target: 60s)">
+            <h2>
+              <span>Ngā mihi &amp; thank you</span>
+              <span class="h2-sub" style="font-family:var(--font-sc);">谢谢大家</span>
+            </h2>
+            <div class="thanks-grid">
+              <!-- Left Column: Collaborators, RAs, Students & Institutional Support -->
+              <div class="thanks-col">
+                <div>
+                  <div class="kicker" style="margin-bottom:10px;">Associate Investigators &amp; Partners</div>
+                  <div class="partner-cards">
+                    <div class="partner-card">
+                      <div class="partner-name">Emma Lehrke</div>
+                      <div class="partner-role">Associate Investigator · Waipapa Taumata Rau University of Auckland</div>
+                    </div>
+                    <div class="partner-card terracotta">
+                      <div class="partner-name">Lars Thomsen</div>
+                      <div class="partner-role">Associate Investigator · Waipapa Taumata Rau University of Auckland</div>
+                    </div>
+                    <div class="partner-card forest">
+                      <div class="partner-name">Leila Boyle</div>
+                      <div class="partner-role">Associate Investigator · Waipapa Taumata Rau University of Auckland</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ra-strip">
+                  <strong>Research Assistants:</strong> Jingdi Sun, Ping Huang &amp; Christy Sun · <em>Waipapa Taumata Rau University of Auckland</em>
+                </div>
+
+                <div class="callout-box">
+                  <strong>Students, Teaching Assistants &amp; Colleagues:</strong> With deep gratitude to the learners and tutors whose voices, candour, and lived experiences guide this work.
+                </div>
+
+                <div class="gallery-plaque">
+                  <div class="artist">Institutional Support</div>
+                  <div class="meta">Waipapa Taumata Rau | University of Auckland Faculty of Science Scholarship of Teaching and Learning (SoTL) Grant</div>
+                </div>
+              </div>
+
+              <!-- Right Column: Contact, Accessibility & Vector QR Code Card -->
+              <div class="qr-card">
+                <div style="width:100%;">
+                  <div class="kicker" style="margin-bottom:6px;">Connect &amp; Follow Along</div>
+                  <div style="font-family:var(--font-serif); font-size:28px; font-weight:500; color:var(--navy);">Liza Bolton</div>
+                  <div style="font-family:var(--font-mono); font-size:16px; color:var(--terracotta); margin-top:4px;">liza.bolton@auckland.ac.nz</div>
+                </div>
+
+                <!-- Crisp High-Contrast Vector QR Code -->
+                <div style="background:#FFFFFF; padding:18px; border-radius:10px; border:1px solid var(--border-subtle); box-shadow:0 8px 20px rgba(27,54,93,0.08);">
+                  <svg viewBox="0 0 180 180" style="width:190px; height:190px; display:block;" role="img" aria-label="QR code linking to project resources and contact details for Liza Bolton">
+                    <rect width="180" height="180" fill="#FFFFFF"/>
+                    <!-- Finder Patterns -->
+                    <rect x="12" y="12" width="42" height="42" fill="none" stroke="#1B365D" stroke-width="6"/>
+                    <rect x="24" y="24" width="18" height="18" fill="#1B365D"/>
+
+                    <rect x="126" y="12" width="42" height="42" fill="none" stroke="#1B365D" stroke-width="6"/>
+                    <rect x="138" y="24" width="18" height="18" fill="#1B365D"/>
+
+                    <rect x="12" y="126" width="42" height="42" fill="none" stroke="#1B365D" stroke-width="6"/>
+                    <rect x="24" y="138" width="18" height="18" fill="#1B365D"/>
+
+                    <!-- Deterministic Data Matrix Modules -->
+                    <g fill="#1B365D">
+                      <rect x="66" y="12" width="8" height="8"/><rect x="82" y="12" width="8" height="8"/><rect x="98" y="12" width="16" height="8"/>
+                      <rect x="66" y="28" width="16" height="8"/><rect x="98" y="28" width="8" height="8"/><rect x="114" y="28" width="8" height="8"/>
+                      <rect x="66" y="44" width="8" height="8"/><rect x="90" y="44" width="16" height="8"/>
+
+                      <rect x="12" y="66" width="16" height="8"/><rect x="44" y="66" width="8" height="8"/><rect x="66" y="66" width="8" height="8"/>
+                      <rect x="114" y="66" width="16" height="8"/><rect x="146" y="66" width="8" height="8"/><rect x="162" y="66" width="8" height="8"/>
+
+                      <rect x="12" y="82" width="8" height="16"/><rect x="34" y="82" width="18" height="8"/><rect x="122" y="82" width="8" height="16"/>
+                      <rect x="138" y="82" width="16" height="8"/><rect x="162" y="90" width="8" height="16"/>
+
+                      <rect x="12" y="106" width="16" height="8"/><rect x="44" y="106" width="8" height="8"/><rect x="66" y="114" width="16" height="8"/>
+                      <rect x="98" y="114" width="8" height="8"/><rect x="126" y="114" width="16" height="8"/><rect x="154" y="114" width="16" height="8"/>
+
+                      <rect x="66" y="130" width="8" height="16"/><rect x="82" y="138" width="16" height="8"/><rect x="114" y="130" width="8" height="16"/>
+                      <rect x="138" y="138" width="16" height="16"/><rect x="66" y="162" width="24" height="8"/>
+                      <rect x="106" y="162" width="16" height="8"/><rect x="138" y="162" width="32" height="8"/>
+                    </g>
+
+                    <!-- Center Terracotta Emblem -->
+                    <rect x="72" y="72" width="36" height="36" rx="6" fill="#FAF8F5" stroke="#9E3B33" stroke-width="2"/>
+                    <text x="90" y="95" text-anchor="middle" font-family="Newsreader, serif" font-size="16" font-weight="600" fill="#9E3B33">ELL</text>
+                  </svg>
+                </div>
+
+                <div style="width:100%; border-top:1px solid var(--border-subtle); padding-top:12px;">
+                  <div style="font-family:var(--font-mono); font-size:13px; color:var(--forest); font-weight:600;">
+                    All images have alt text · Translatable in your browser
+                  </div>
+                  <div style="font-family:var(--font-mono); font-size:12px; color:var(--ink-muted); margin-top:4px;">
+                    Shortcuts: &larr;/&rarr; Navigate · S Notes · O Overview · T Timer
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================================
+               QUARTO / REVEAL.JS FOOTER & PRESENTER CONTROLS
+               ================================================================ -->
+          <footer class="quarto-footer">
+            <div class="footer-brand">
+              Waipapa Taumata Rau University of Auckland | Faculty of Science SoTL Showcase
+            </div>
+
+            <div class="footer-controls">
+              <button type="button" class="hud-btn" id="btnPrev" title="Previous Slide (Left Arrow)">&larr;</button>
+              <button type="button" class="hud-btn" id="btnNext" title="Next Slide (Right Arrow / Space)">&rarr;</button>
+
+              <select class="slide-jump-select" id="slideJump" aria-label="Jump to slide"></select>
+
+              <button type="button" class="hud-btn" id="btnNotes" title="Toggle Speaker Notes (S)">S · Notes</button>
+              <button type="button" class="hud-btn" id="btnOverview" title="3x3 Slide Overview Grid (O)">O · Overview</button>
+
+              <span class="slide-counter" id="slideCounter">1 / 9</span>
+
+              <button type="button" class="timer-pill" id="timerPill" title="Start/Pause 10:00 Rehearsal Timer (T) · Double-click to reset">
+                <span id="timerStateIcon">&#9654;</span>
+                <span id="timerClock">10:00</span>
+              </button>
+            </div>
+          </footer>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- ======================================================================
+         SPEAKER NOTES DRAWER ('S')
+         ====================================================================== -->
+    <aside class="notes-drawer" id="notesDrawer" aria-label="Speaker Notes">
+      <div class="notes-bar">
+        <div>
+          <strong id="notesSlideInfo">Slide 1 / 9</strong>
+          <span style="margin:0 10px;">·</span>
+          <span id="notesTimeTarget">Target: 0:00–0:30</span>
+        </div>
+        <button type="button" class="hud-btn" id="btnCloseNotes">Close (S)</button>
+      </div>
+      <div class="notes-content" id="notesContent"></div>
+    </aside>
+
+    <!-- ======================================================================
+         3x3 SLIDE OVERVIEW MODAL ('O')
+         ====================================================================== -->
+    <div class="overview-modal" id="overviewModal" role="dialog" aria-modal="true" aria-label="Slide Overview">
+      <div class="overview-header">
+        <h3>Slide Overview — <em>In their own words</em> (9 Slides · 10 Minutes)</h3>
+        <button type="button" class="hud-btn" id="btnCloseOverview" style="background:rgba(255,255,255,0.14); color:#FAF8F5; border-color:rgba(255,255,255,0.3);">Close (Esc)</button>
+      </div>
+      <div class="overview-grid" id="overviewGrid"></div>
+    </div>
+  </div>
+
+  <script>
+    /* ========================================================================
+       PRESENTATION CONTROLLER
+       - Responsive 1600x900 stage auto-scaling
+       - Slide navigation (keyboard, buttons, slide-jump dropdown, hash, swipe)
+       - Interactive Babel Fish hover & click tooltip
+       - Optional hover plate image replacement
+       - Collapsible Speaker Notes drawer ('S')
+       - 3x3 Slide Overview modal ('O')
+       - 10:00 countdown rehearsal timer ('T', double-click to reset)
+       ======================================================================== */
+    (function () {
+      'use strict';
+
+      const stageArea = document.getElementById('stageArea');
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const totalSlides = slides.length;
+
+      const topProgressFill = document.getElementById('topProgressFill');
+      const slideCounter = document.getElementById('slideCounter');
+      const slideJump = document.getElementById('slideJump');
+      const timerPill = document.getElementById('timerPill');
+      const timerStateIcon = document.getElementById('timerStateIcon');
+      const timerClock = document.getElementById('timerClock');
+
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const btnNotes = document.getElementById('btnNotes');
+      const btnOverview = document.getElementById('btnOverview');
+
+      const notesDrawer = document.getElementById('notesDrawer');
+      const notesSlideInfo = document.getElementById('notesSlideInfo');
+      const notesTimeTarget = document.getElementById('notesTimeTarget');
+      const notesContent = document.getElementById('notesContent');
+      const btnCloseNotes = document.getElementById('btnCloseNotes');
+
+      const overviewModal = document.getElementById('overviewModal');
+      const overviewGrid = document.getElementById('overviewGrid');
+      const btnCloseOverview = document.getElementById('btnCloseOverview');
+
+      const babelTrigger = document.getElementById('babelTrigger');
+      const babelPopover = document.getElementById('babelPopover');
+
+      const plateUploader = document.getElementById('plateUploader');
+      const toastMsg = document.getElementById('toastMsg');
+
+      let currentIndex = 0;
+      let notesOpen = false;
+      let overviewOpen = false;
+      let babelPinned = false;
+      let activePlateContainer = null;
+
+      // 10:00 Countdown Timer (600 seconds)
+      const TALK_DURATION = 600;
+      let secondsElapsed = 0;
+      let timerActive = false;
+      let timerHandle = null;
+
+      let toastTimer = null;
+      function notify(msg) {
+        toastMsg.textContent = msg;
+        toastMsg.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastMsg.classList.remove('show'), 2600);
+      }
+
+      /* 1. Responsive 1600x900 Stage Scaling */
+      function recalcScale() {
+        const rect = stageArea.getBoundingClientRect();
+        const availW = Math.max(320, rect.width - 32);
+        const availH = Math.max(180, rect.height - 28);
+        const scale = Math.min(availW / 1600, availH / 900, 1);
+        document.documentElement.style.setProperty('--stage-scale', scale.toFixed(4));
+      }
+
+      window.addEventListener('resize', recalcScale);
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(recalcScale).observe(stageArea);
+      }
+
+      /* Populate Slide Jump Dropdown */
+      slides.forEach((s, idx) => {
+        const opt = document.createElement('option');
+        opt.value = String(idx);
+        opt.textContent = `${idx + 1}. ${s.dataset.title || `Slide ${idx + 1}`}`;
+        slideJump.appendChild(opt);
+      });
+
+      slideJump.addEventListener('change', (e) => {
+        const targetIdx = parseInt(e.target.value, 10);
+        if (!Number.isNaN(targetIdx)) {
+          showSlide(targetIdx);
+        }
+        slideJump.blur();
+      });
+
+      /* 2. Slide Navigation */
+      function showSlide(index, pushHash = true) {
+        const nextIdx = Math.max(0, Math.min(totalSlides - 1, index));
+        const prevIdx = currentIndex;
+        currentIndex = nextIdx;
+
+        slides.forEach((s, i) => {
+          s.classList.remove('active', 'exit-left');
+          if (i === currentIndex) {
+            s.classList.add('active');
+          } else if (i === prevIdx && prevIdx < currentIndex) {
+            s.classList.add('exit-left');
+          }
+        });
+
+        const currentSlide = slides[currentIndex];
+        const title = currentSlide.dataset.title || `Slide ${currentIndex + 1}`;
+        const time = currentSlide.dataset.time || '';
+        const notes = currentSlide.dataset.notes || '';
+
+        topProgressFill.style.width = `${((currentIndex + 1) / totalSlides) * 100}%`;
+        slideCounter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        slideJump.value = String(currentIndex);
+
+        notesSlideInfo.textContent = `Slide ${currentIndex + 1} / ${totalSlides} — ${title}`;
+        notesTimeTarget.textContent = `Target: ${time}`;
+        notesContent.textContent = notes;
+
+        document.querySelectorAll('.ov-card').forEach((card, i) => {
+          card.classList.toggle('current', i === currentIndex);
+        });
+
+        if (pushHash && currentSlide.id) {
+          try {
+            history.replaceState(null, '', `#/${currentSlide.id}`);
+          } catch (e) { /* ignore in sandboxed frames */ }
+        }
+      }
+
+      function nextSlide() {
+        if (currentIndex < totalSlides - 1) showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        if (currentIndex > 0) showSlide(currentIndex - 1);
+      }
+
+      function syncHash() {
+        const slug = window.location.hash.replace(/^#\/?/, '').trim();
+        if (!slug) return;
+        const found = slides.findIndex(s => s.id === slug);
+        if (found !== -1) showSlide(found, false);
+      }
+
+      window.addEventListener('hashchange', syncHash);
+
+      /* 3. Interactive Babel Fish Hover / Click Tooltip */
+      if (babelTrigger && babelPopover) {
+        function setBabelState(open) {
+          babelPopover.classList.toggle('visible', open);
+          babelTrigger.classList.toggle('open', open);
+          babelTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        babelTrigger.addEventListener('mouseenter', () => {
+          if (!babelPinned) setBabelState(true);
+        });
+
+        babelTrigger.addEventListener('mouseleave', () => {
+          if (!babelPinned) setBabelState(false);
+        });
+
+        babelTrigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          babelPinned = !babelPinned;
+          setBabelState(babelPinned);
+        });
+
+        document.addEventListener('click', (e) => {
+          if (babelPinned && !babelPopover.contains(e.target) && e.target !== babelTrigger) {
+            babelPinned = false;
+            setBabelState(false);
+          }
+        });
+      }
+
+      /* Optional Plate Image Swap */
+      document.querySelectorAll('.plate-swap-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activePlateContainer = btn.closest('.column-image-bg');
+          plateUploader.value = '';
+          plateUploader.click();
+        });
+      });
+
+      plateUploader.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file || !activePlateContainer) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          const svg = activePlateContainer.querySelector('svg');
+          const img = activePlateContainer.querySelector('img.plate-art');
+          if (svg) svg.style.display = 'none';
+          if (img) {
+            img.src = evt.target.result;
+            img.style.display = 'block';
+          }
+          notify('Visual plate image updated');
+        };
+        reader.readAsDataURL(file);
+      });
+
+      /* 4. Speaker Notes Drawer ('S') */
+      function toggleNotes(state) {
+        notesOpen = typeof state === 'boolean' ? state : !notesOpen;
+        notesDrawer.classList.toggle('open', notesOpen);
+        btnNotes.classList.toggle('active', notesOpen);
+        recalcScale();
+        setTimeout(recalcScale, 260);
+      }
+
+      /* 5. 3x3 Slide Overview Modal ('O') */
+      function renderOverview() {
+        overviewGrid.innerHTML = '';
+        slides.forEach((slide, idx) => {
+          const card = document.createElement('div');
+          card.className = 'ov-card' + (idx === currentIndex ? ' current' : '');
+          card.tabIndex = 0;
+
+          const thumb = document.createElement('div');
+          thumb.className = 'ov-thumb';
+
+          const wrap = document.createElement('div');
+          wrap.className = 'ov-clone-wrap';
+
+          const clone = slide.cloneNode(true);
+          clone.classList.add('active');
+          clone.style.position = 'relative';
+          clone.style.opacity = '1';
+          clone.style.visibility = 'visible';
+          clone.style.transform = 'none';
+          wrap.appendChild(clone);
+          thumb.appendChild(wrap);
+
+          const meta = document.createElement('div');
+          meta.className = 'ov-meta';
+          meta.innerHTML = `<strong>${idx + 1}. ${slide.dataset.title || 'Slide'}</strong><span class="ov-time">${slide.dataset.time || ''}</span>`;
+
+          card.appendChild(thumb);
+          card.appendChild(meta);
+
+          card.addEventListener('click', () => {
+            showSlide(idx);
+            toggleOverview(false);
+          });
+
+          overviewGrid.appendChild(card);
+        });
+        scaleOverviewThumbs();
+      }
+
+      function scaleOverviewThumbs() {
+        if (!overviewOpen) return;
+        document.querySelectorAll('.ov-thumb').forEach(box => {
+          const w = box.getBoundingClientRect().width;
+          if (w > 0) {
+            const wrap = box.querySelector('.ov-clone-wrap');
+            if (wrap) wrap.style.transform = `scale(${(w / 1600).toFixed(4)})`;
+          }
+        });
+      }
+
+      function toggleOverview(state) {
+        overviewOpen = typeof state === 'boolean' ? state : !overviewOpen;
+        if (overviewOpen) {
+          renderOverview();
+          overviewModal.classList.add('open');
+          btnOverview.classList.add('active');
+          requestAnimationFrame(scaleOverviewThumbs);
+        } else {
+          overviewModal.classList.remove('open');
+          btnOverview.classList.remove('active');
+        }
+      }
+
+      window.addEventListener('resize', scaleOverviewThumbs);
+
+      /* 6. 10:00 Rehearsal Countdown Timer ('T') */
+      function formatClock(sec) {
+        const abs = Math.abs(sec);
+        const m = Math.floor(abs / 60);
+        const s = abs % 60;
+        return `${sec < 0 ? '-' : ''}${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      }
+
+      function updateTimerUI() {
+        const remaining = TALK_DURATION - secondsElapsed;
+        timerClock.textContent = formatClock(remaining);
+        timerStateIcon.innerHTML = timerActive ? '&#10074;&#10074;' : '&#9654;';
+
+        timerPill.classList.remove('running', 'warning', 'overtime');
+        if (secondsElapsed >= 600) {
+          timerPill.classList.add('overtime');
+        } else if (secondsElapsed >= 480) {
+          timerPill.classList.add('warning');
+        } else if (timerActive) {
+          timerPill.classList.add('running');
+        }
+      }
+
+      function toggleTimer() {
+        if (timerActive) {
+          timerActive = false;
+          clearInterval(timerHandle);
+          notify('Timer paused');
+        } else {
+          timerActive = true;
+          notify('10:00 timer running (double-click timer to reset)');
+          timerHandle = setInterval(() => {
+            secondsElapsed += 1;
+            updateTimerUI();
+            if (secondsElapsed === 480) notify('8:00 elapsed — 2 minutes remaining');
+            if (secondsElapsed === 600) notify('10:00 reached');
+          }, 1000);
+        }
+        updateTimerUI();
+      }
+
+      function resetTimer() {
+        timerActive = false;
+        clearInterval(timerHandle);
+        secondsElapsed = 0;
+        updateTimerUI();
+        notify('Timer reset to 10:00');
+      }
+
+      /* 7. Event Listeners & Keyboard Shortcuts */
+      btnPrev.addEventListener('click', prevSlide);
+      btnNext.addEventListener('click', nextSlide);
+      btnNotes.addEventListener('click', () => toggleNotes());
+      btnCloseNotes.addEventListener('click', () => toggleNotes(false));
+      btnOverview.addEventListener('click', () => toggleOverview());
+      btnCloseOverview.addEventListener('click', () => toggleOverview(false));
+
+      timerPill.addEventListener('click', toggleTimer);
+      timerPill.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        resetTimer();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.target && (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT')) {
+          return;
+        }
+
+        if (e.key === 'Escape') {
+          if (overviewOpen) {
+            toggleOverview(false);
+            return;
+          }
+          if (babelPinned && babelPopover && babelTrigger) {
+            babelPinned = false;
+            babelPopover.classList.remove('visible');
+            babelTrigger.classList.remove('open');
+            babelTrigger.setAttribute('aria-expanded', 'false');
+            return;
+          }
+        }
+        if (overviewOpen) return;
+
+        switch (e.key) {
+          case 'ArrowRight':
+          case 'PageDown':
+            e.preventDefault();
+            nextSlide();
+            break;
+          case ' ':
+            e.preventDefault();
+            if (e.shiftKey) prevSlide();
+            else nextSlide();
+            break;
+          case 'ArrowLeft':
+          case 'PageUp':
+            e.preventDefault();
+            prevSlide();
+            break;
+          case 'Home':
+            e.preventDefault();
+            showSlide(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            showSlide(totalSlides - 1);
+            break;
+          case 's':
+          case 'S':
+            e.preventDefault();
+            toggleNotes();
+            break;
+          case 'o':
+          case 'O':
+            e.preventDefault();
+            toggleOverview();
+            break;
+          case 't':
+          case 'T':
+            e.preventDefault();
+            toggleTimer();
+            break;
+        }
+      });
+
+      // Touch swipe navigation
+      let touchX = 0;
+      let touchY = 0;
+      stageArea.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          touchX = e.touches[0].clientX;
+          touchY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      stageArea.addEventListener('touchend', (e) => {
+        if (e.changedTouches.length === 1) {
+          const dx = e.changedTouches[0].clientX - touchX;
+          const dy = e.changedTouches[0].clientY - touchY;
+          if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+            if (dx < 0) nextSlide();
+            else prevSlide();
+          }
+        }
+      }, { passive: true });
+
+      // Initialize
+      recalcScale();
+      syncHash();
+      showSlide(currentIndex, false);
+      updateTimerUI();
+    })();
+  </script>
+</body>
+</html>
